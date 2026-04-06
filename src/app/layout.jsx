@@ -1,7 +1,9 @@
 import { DM_Sans, Lora } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
-
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from '@clerk/ui/themes'
+import Header from "@/components/landing/header";
 
 const serif = Lora({
   subsets: ["latin"],
@@ -23,25 +25,30 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html suppressHydrationWarning
-      lang="en"
-      className={`${dmSans.variable} ${serif.variable} font-sans`}
-    >
-      <body className="min-h-full flex flex-col">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <main className="min-h-screen">
-            {children}
-          </main>
-          <footer className="flex items-center justify-center py-4" >
-            <p>Viva &copy; 2026</p>
-          </footer>
-        </ThemeProvider>
-      </body>
-    </html>
+    <ClerkProvider appearance={{
+      theme: dark,
+    }}>
+      <html suppressHydrationWarning
+        lang="en"
+        className={`${dmSans.variable} ${serif.variable} font-sans`}
+      >
+        <body className="min-h-full flex flex-col">
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Header />
+            <main className="min-h-screen">
+              {children}
+            </main>
+            <footer className="flex items-center justify-center py-4" >
+              <p>Viva &copy; 2026</p>
+            </footer>
+          </ThemeProvider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
