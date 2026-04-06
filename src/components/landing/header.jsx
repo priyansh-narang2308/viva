@@ -17,8 +17,13 @@ const Header = () => {
                 />
             </Link>
 
+            {/* Todo: Redirect */}
+
             <div className="flex items-center gap-3">
                 <Show when="signed-out">
+                    {/* Links */}
+
+                    {/* Credits */}
                     <SignInButton mode='modal'>
                         <Button variant="outline" className={"cursor-pointer"}>Sign In</Button>
                     </SignInButton>
