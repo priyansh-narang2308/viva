@@ -5,6 +5,7 @@ import {
     CodeBlock,
     CodeHeader,
 } from '@/components/animate-ui/components/animate/code';
+import { Code2 } from 'lucide-react';
 
 export const CodeDemo = ({
     duration,
@@ -34,7 +35,7 @@ function MyComponent(props: MyComponentProps) {
 
 export { MyComponent, type MyComponentProps };`}
         >
-            <CodeHeader  copyButton>
+            <CodeHeader icon={Code2}  copyButton>
                 my-component.tsx
             </CodeHeader>
 
