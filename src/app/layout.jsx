@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from '@clerk/ui/themes'
 import Header from "@/components/landing/header";
+import Footer from "@/components/landing/footer";
 
 const serif = Lora({
   subsets: ["latin"],
@@ -43,9 +44,7 @@ export default function RootLayout({ children }) {
             <main className="min-h-screen">
               {children}
             </main>
-            <footer className="flex items-center justify-center py-4" >
-              <p>Viva &copy; 2026</p>
-            </footer>
+            <Footer />
           </ThemeProvider>
         </body>
       </html>
