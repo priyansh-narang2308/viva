@@ -16,6 +16,8 @@ import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import Link from "next/link";
 import { HoleBackgroundDemo } from "@/components/demo-components-backgrounds-hole";
+import { PricingTable } from "@clerk/nextjs";
+import PricingSection from "@/components/landing/pricing-section";
 
 function MockUI({ rows = 3 }) {
   const widths = ["w-4/5", "w-3/5", "w-2/5", "w-4/5", "w-1/2"];
@@ -52,15 +54,11 @@ export function BentoCard({ icon, title, desc, children, className = "" }) {
       className={`relative bg-[#0f0f11] border border-white/10 hover:border-amber-400/20 rounded-2xl p-9 h-full transition duration-300 overflow-hidden ${className}`}
     >
       <div className="absolute inset-0 bg-linear-to-br from-amber-400/5 via-transparent pointer-events-none" />
-
       <span className="w-11 h-11 rounded-xl bg-amber-400/10 border border-amber-400/20 flex items-center justify-center text-xl mb-5">
         {icon}
       </span>
-
       <h3 className="font-serif text-xl tracking-tight mb-2">{title}</h3>
-
       <p className="text-sm text-stone-400 leading-relaxed">{desc}</p>
-
       {children}
     </div>
   );
@@ -100,10 +98,7 @@ export default function LandingPage() {
               </Button>
             </Link>
           </div>
-
-
         </div>
-
         <div className="col-span-full lg:col-span-2 flex items-center justify-center lg:justify-start mt-12 lg:mt-0 lg:rotate-3">
           <CodeDemo duration={30000} writing />
         </div>
@@ -296,7 +291,7 @@ export default function LandingPage() {
           </p>
         </div>
 
-        {/* <PricingSection /> */}
+        <PricingSection />
       </section>
 
       <section className="relative z-10 pb-28 max-w-5xl mx-auto px-6">
