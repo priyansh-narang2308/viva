@@ -1,4 +1,7 @@
+"use client"
+
 import { CodeDemo } from "@/components/demo-components-animate-code";
+import { motion } from "motion/react";
 import { StarsBackgroundDemo } from "@/components/demo-components-backgrounds-stars";
 import { AI_TAGS, LOGOS, ROLES, SLOTS } from "@/lib/data";
 import {
@@ -106,27 +109,36 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section className="relative z-10 border-y border-white/10 py-14">
-        <p className="text-center text-xs font-medium text-stone-600 tracking-widest uppercase mb-8">
+      <section className="relative z-10 border-y border-white/10 py-14 overflow-hidden">
+        <p className="text-center text-xs font-medium text-stone-600 tracking-widest uppercase mb-10">
           Interviewees landed roles at
         </p>
 
-        <div className="flex flex-wrap items-center justify-center gap-24 px-6">
-          {LOGOS.map((l) => (
-            <Image
-              key={l.alt}
-              src={l.src}
-              alt={l.alt}
-              width={50}
-              height={50}
-              className="h-6 w-auto opacity-60 grayscale"
-            />
-          ))}
+        <div className="relative flex overflow-hidden group">
+          <motion.div
+            className="flex gap-24 items-center whitespace-nowrap"
+            animate={{ x: ["0%", "-33.33%"] }}
+            transition={{
+              repeat: Infinity,
+              duration: 40,
+              ease: "linear",
+            }}
+          >
+            {[...LOGOS, ...LOGOS, ...LOGOS].map((l, i) => (
+              <Image
+                key={`${l.alt}-${i}`}
+                src={l.src}
+                alt={l.alt}
+                width={120}
+                height={40}
+                className="h-7 sm:h-8 w-auto opacity-40 grayscale hover:opacity-100 hover:grayscale-0 transition-all duration-500 cursor-pointer"
+              />
+            ))}
+          </motion.div>
         </div>
       </section>
 
-      {/* FEATURES */}
-      <section className="relative z-10 py-28 max-w-5xl mx-auto px-6">
+      <section id="features" className="relative z-10 py-28 max-w-5xl mx-auto px-6 scroll-mt-24">
         <div className="text-center mb-16">
           <SectionLabel>Features</SectionLabel>
           <SectionHeading
@@ -231,8 +243,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ROLES */}
-      <section className="relative z-10 pb-28 max-w-5xl mx-auto px-6">
+      <section id="audience" className="relative z-10 pb-28 max-w-5xl mx-auto px-6 scroll-mt-24">
         <div className="text-center mb-16">
           <SectionLabel>Who it&apos;s for</SectionLabel>
           <SectionHeading gray="Built for both sides" gold="of the table" />
@@ -273,7 +284,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* PRICING */}
       <section className="relative z-10 pb-28 max-w-5xl mx-auto px-6">
         <div className="text-center mb-16">
           <SectionLabel>Pricing</SectionLabel>
@@ -289,7 +299,6 @@ export default function LandingPage() {
         {/* <PricingSection /> */}
       </section>
 
-      {/* CTA */}
       <section className="relative z-10 pb-28 max-w-5xl mx-auto px-6">
         <div className="relative border border-amber-400/20 rounded-3xl px-3 sm:px-16 py-20 bg-linear-to-br from-amber-400/5 text-center overflow-hidden">
           <HoleBackgroundDemo />
@@ -306,13 +315,13 @@ export default function LandingPage() {
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/onboarding" className="relative">
-              <Button variant="gold" size="hero">
+              <Button variant="gold" size="hero" className={"cursor-pointer"}>
                 Get started
               </Button>
             </Link>
 
             <Link href="/explore" className="relative">
-              <Button variant="outline" size="hero">
+              <Button variant="outline" size="hero" className={"cursor-pointer"}>
                 Browse Interviewers →
               </Button>
             </Link>

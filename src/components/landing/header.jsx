@@ -19,21 +19,29 @@ const Header = () => {
 
             {/* Todo: Redirect */}
 
-            <div className="flex items-center gap-3">
-                <Show when="signed-out">
-                    {/* Links */}
+            <div className="flex items-center gap-8">
+                <div className="hidden md:flex items-center gap-6">
+                    <Link href="#features" className="text-sm font-medium text-stone-500 hover:text-white transition-colors">
+                        Features
+                    </Link>
+                    <Link href="#audience" className="text-sm font-medium text-stone-500 hover:text-white transition-colors">
+                        Who it's for
+                    </Link>
+                </div>
 
-                    {/* Credits */}
-                    <SignInButton mode='modal'>
-                        <Button variant="outline" className={"cursor-pointer"}>Sign In</Button>
-                    </SignInButton>
-                    <SignUpButton mode='modal'>
-                        <Button variant="gold" className={"cursor-pointer"}>Get Started</Button>
-                    </SignUpButton>
-                </Show>
-                <Show when="signed-in">
-                    <UserButton />
-                </Show>
+                <div className="flex items-center gap-3">
+                    <Show when="signed-out">
+                        <SignInButton mode='modal'>
+                            <Button variant="outline" className={"cursor-pointer"}>Sign In</Button>
+                        </SignInButton>
+                        <SignUpButton mode='modal'>
+                            <Button variant="gold" className={"cursor-pointer"}>Get Started</Button>
+                        </SignUpButton>
+                    </Show>
+                    <Show when="signed-in">
+                        <UserButton />
+                    </Show>
+                </div>
             </div>
 
         </nav>
